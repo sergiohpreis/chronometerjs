@@ -3,8 +3,8 @@ var chronometerjs = (function(){
 	var afterStopCallback;
 	var afterResetCallback;
 	//Elementos do Cronometro
-	var _minutes = '';
-	var _seconds = '';
+	var _minutes;
+	var _seconds;
 	//Minuto Maximo
 	var _maximumMinute = '';
 	var _firstPass = true;
@@ -31,15 +31,21 @@ var chronometerjs = (function(){
 				_currentMinute --;
 			};
 
-			_minutes.textContent = _currentMinute;
-			_seconds.textContent = _currentSeconds;
+			for (var i = _minutes.length - 1; i >= 0; i--) {
+				_minutes[i].textContent = _currentMinute;
+				_seconds[i].textContent = _currentSeconds;
+			};
 
 			if (_currentSeconds < 10) {
-				_seconds.textContent = '0' + _currentSeconds;
+				for (var j = _seconds.length - 1; j >= 0; j--) {
+					_seconds[j].textContent = '0' + _currentSeconds;
+				};
 			}
 
 			if (_currentMinute < 10) {
-				_minutes.textContent = '0' + _currentMinute;
+				for (var k = _minutes.length - 1; k >= 0; k--) {
+					_minutes[k].textContent = '0' + _currentMinute;
+				};
 			};
 		},1000);
 	};
@@ -48,8 +54,12 @@ var chronometerjs = (function(){
 	//Para o Cronometro
 	var stop = function(){
 		clearInterval(executeStart);
-		_minutes.textContent = '00';
-		_seconds.textContent = '00';
+		for (var j = _seconds.length - 1; j >= 0; j--) {
+			_seconds[j].textContent = '00';
+		};
+		for (var k = _minutes.length - 1; k >= 0; k--) {
+			_minutes[k].textContent = '00';
+		};
 		_firstPass = true;
 		afterStopExecute();
 	};
