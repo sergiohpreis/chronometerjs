@@ -1,4 +1,7 @@
 var chronometerjs = (function(){
+	var executeStart;
+	var afterStopCallback;
+	var afterResetCallback;
 	//Elementos do Cronometro
 	var _minutes = '';
 	var _seconds = '';
