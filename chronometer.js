@@ -6,7 +6,7 @@ var chronometerjs = (function(){
 	var _minutes;
 	var _seconds;
 	//Minuto Maximo
-	var _maximumMinute = '';
+	var _maximumMinute;
 	var _firstPass = true;
 	//Minutos e Segundos que serão Decrementados
 	var _currentMinute =01;
@@ -72,6 +72,8 @@ var chronometerjs = (function(){
 		};
 
 		_currentSeconds = 60;
+		_firstPass = true;
+		stop();
 		start();
 		afterResetExecute();
 	};
