@@ -28,7 +28,15 @@
 			startTrigger: '.actions__btn__start',
 			stopTrigger: '.actions__btn__stop',
 			resetTrigger: '.actions__btn__reset'
-		})
+		});
+
+		chronometerjs.afterReset(function(){
+			alert('Resetou');
+		});
+
+		chronometerjs.afterStop(function(){
+			alert('Parou');
+		});
 	</script>
 </body>
 </html>
