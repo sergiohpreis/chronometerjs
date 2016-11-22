@@ -1,27 +1,50 @@
 # ChronometerJS
 
-Examples:
+Uma biblioteca em javascript para criação de cronometros
+
+### Exemplo:
+```html
+<header class="header">
+		<h3 class="header__title">Chronometer JS <span>Example</span></h3>
+		<div class="chronometer">
+			<span class="chronometer__number chronometer__number--minutes"></span>
+			<span class="chronometer__number chronometer__number--seconds"></span>
+		</div>
+		<div class="actions">
+			<span class="actions__btn actions__btn__start">Start</span>
+			<span class="actions__btn actions__btn__stop">Stop</span>
+			<span class="actions__btn actions__btn__reset">Reset</span>
+		</div>
+	</header>
+```
 
 ```javascript
-// Seta o Elemento que receberá os minutos
-chronometerjs.setMinutesElement(document.querySelectorAll('.cronometro--text__number')[0]);
-
-// Seta o Elemento que receberá os segundos
-chronometerjs.setSecondsElement(document.querySelectorAll('.cronometro--text__number')[1]);
-
-// Seta o Elemento que reseta o Relógio
-chronometerjs.resetTrigger('.cmodal--btn');
-
-// Seta o Tempo Maximo
-chronometerjs.setMaximeMinute(10); 
-
-// Callback após o cronometro parar
-chronometerjs.afterStop(function(){
-	console.log('Cronometro Parou');
+chronometerjs.configure({
+	// Minutos do cronomêtro (Se não informado, o padrão é 1)
+	minutes: 10,
+	// Segundos do cronomêtro (Opcional)
+	seconds: 20,
+	// Elementos que receberão os valores (Obrigatórios)
+	minElement: document.querySelector('.chronometer__number--minutes'),
+	secElement: document.querySelector('.chronometer__number--seconds'),
+	// Elementos que dispararão as ações do cronometros (Caso necessário)
+	startTrigger: '.actions__btn__start',
+	stopTrigger: '.actions__btn__stop',
+	resetTrigger: '.actions__btn__reset'
 });
 
-// Callback após o cronometro resetar
+// Você pode iniciar o cronômetro utilizando o método start(), parar com o método stop(), e reiniciar com o método reset(), exemplo:
+chronometerjs.start();
+chronometerjs.stop();
+chronometerjs.reset();
+
+// É possivel passar um callback para as ações do cronometro
+chronometerjs.afterStop(function(){
+	alert('Parou');
+});
+
 chronometerjs.afterReset(function(){
-	console.log('Cronometro Resetou');
+	alert('Resetou');
 });
 ```
+*Exemplo dentro da pasta chronometer-test/*
