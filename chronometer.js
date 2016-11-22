@@ -7,6 +7,9 @@ var chronometerjs = (function(){
 	var _seconds;
 	//Minuto Maximo
 	var _maximumMinute;
+	//Segundo que irá iniciar
+	var _initSecond;
+	// Váriavel que indica se é a primeira vez que esta rodando o cronomêtro, para decrementar o minuto
 	var _firstPass = true;
 	//Minutos e Segundos que serão Decrementados
 	var _currentMinute =01;
@@ -64,15 +67,15 @@ var chronometerjs = (function(){
 		afterStopExecute();
 	};
 	//Reseta o Cronometro
-	var reset = function(minutes){
+	var reset = function(minutes, seconds){
 		if (arguments.length > 0) {
 			_currentMinute = minutes;
+			_currentSeconds = seconds;
 		} else {
 			_currentMinute = _maximumMinute;
+			_currentSeconds = 60;
 		};
 
-		_currentSeconds = 60;
-		_firstPass = true;
 		stop();
 		start();
 		afterResetExecute();
@@ -110,6 +113,11 @@ var chronometerjs = (function(){
 		_currentMinute = minute;
 		_maximumMinute = minute;
 	};
+	//Define o Segundo do cronometro, caso não seja usado, o padrão é 59
+	var setInitSecond = function(second){
+		_currentSeconds = second;
+		_initSecond = second;
+	};
 	//Define o elemento que reseta o cronometro
 	var resetTrigger = function(element){
 		document.querySelector(element).addEventListener('click', function(){
@@ -125,6 +133,7 @@ var chronometerjs = (function(){
 		setSecondsElement: setSecondsElement,
 		resetTrigger: resetTrigger,
 		setMaximeMinute: setMaximeMinute,
+		setInitSecond: setInitSecond,
 		afterStop: afterStop,
 		afterReset: afterReset
 	};
