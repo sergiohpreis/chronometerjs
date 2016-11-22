@@ -7,21 +7,28 @@
 </head>
 <body>
 	<header class="header">
+		<h3 class="header__title">Chronometer JS <span>Example</span></h3>
 		<div class="chronometer">
 			<span class="chronometer__number chronometer__number--minutes"></span>
 			<span class="chronometer__number chronometer__number--seconds"></span>
+		</div>
+		<div class="actions">
+			<span class="actions__btn actions__btn__start">Start</span>
+			<span class="actions__btn actions__btn__stop">Stop</span>
+			<span class="actions__btn actions__btn__reset">Reset</span>
 		</div>
 	</header>
 	<!-- <script src="../chronometer.js"></script> -->
 	<script src="../chronometer.min.js"></script>
 	<script>
-		(function(){
-			chronometerjs.setMaximeMinute(10);
-			chronometerjs.setInitSecond(15);
-			chronometerjs.setMinutesElement(document.querySelectorAll('.chronometer__number--minutes'));
-			chronometerjs.setSecondsElement(document.querySelectorAll('.chronometer__number--seconds'));
-			chronometerjs.start();
-		})();
+		chronometerjs.configure({
+			minutes: 10,
+			minElement: document.querySelector('.chronometer__number--minutes'),
+			secElement: document.querySelector('.chronometer__number--seconds'),
+			startTrigger: '.actions__btn__start',
+			stopTrigger: '.actions__btn__stop',
+			resetTrigger: '.actions__btn__reset'
+		})
 	</script>
 </body>
 </html>
