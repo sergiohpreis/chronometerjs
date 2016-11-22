@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chronometer Test</title>
+	<link rel="stylesheet" href="chronometer.css">
+</head>
+<body>
+	<header class="header">
+		<div class="chronometer">
+			<span class="chronometer__number chronometer__number--minutes"></span>
+			<span class="chronometer__number chronometer__number--seconds"></span>
+		</div>
+	</header>
+	<script src="../chronometer.js"></script>
+	<script>
+		(function(){
+			chronometerjs.setMaximeMinute(10);
+			chronometerjs.setInitSecond(15);
+			chronometerjs.setMinutesElement(document.querySelectorAll('.chronometer__number--minutes'));
+			chronometerjs.setSecondsElement(document.querySelectorAll('.chronometer__number--seconds'));
+			chronometerjs.start();
+		})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+.chronometer {
+    width: 50%;
+	margin: 0 auto;
+	margin-top: 60px;
+	text-align: center;
+}
+
+.chronometer__number {
+	display: inline-block;
+	padding: 20px;
+    background: #333;
+	font-family: 'Arial';
+	font-size: 60px;
+	color: #0c0b0b;
+}
+
+.chronometer__number:before {
+	font-size: 16px;
+    display: block;
+    color: #212020;
+    border-bottom: 1px solid;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+.chronometer__number--minutes:before {
+	content: 'Min';
+}
+
+.chronometer__number--seconds:before {
+	content: 'Seg';
+}
