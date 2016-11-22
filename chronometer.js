@@ -110,10 +110,6 @@ var chronometerjs = (function(){
 	};
 	// Método que reseta o Cronometro
 	var reset = function(minutes, seconds){
-		if (stoped === false) {
-			throw "Use chronometerjs.stop() before reset";
-		};
-
 		if (arguments.length > 0) {
 			_currentMinute = minutes;
 			_currentSeconds = seconds;
@@ -122,7 +118,8 @@ var chronometerjs = (function(){
 			_currentSeconds = 60;
 		};
 
-		stop();
+		clearInterval(executeStart);
+		_firstPass = true;
 		stoped = false;
 		start();
 		afterResetExecute();
