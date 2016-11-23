@@ -20,14 +20,14 @@ Uma biblioteca em javascript para criação de cronometros
 
 ```javascript
 chronometerjs.configure({
-	// Minutos do cronomêtro (Se não informado, o padrão é 1)
+	// Minutos do cronometro (Se não informado, o padrão é 1)
 	minutes: 10,
-	// Segundos do cronomêtro (Opcional)
+	// Segundos do cronometro
 	seconds: 20,
-	// Elementos que receberão os valores (Obrigatórios)
+	// Elementos que vão receber os valores
 	minElement: document.querySelector('.chronometer__number--minutes'),
 	secElement: document.querySelector('.chronometer__number--seconds'),
-	// Elementos que dispararão as ações do cronometros (Caso necessário)
+	// Elementos que irão disparar as ações do cronometros
 	startTrigger: '.actions__btn__start',
 	stopTrigger: '.actions__btn__stop',
 	resetTrigger: '.actions__btn__reset'
@@ -39,12 +39,18 @@ chronometerjs.stop();
 chronometerjs.reset();
 
 // É possivel passar um callback para as ações do cronometro
-chronometerjs.afterStop(function(){
-	alert('Parou');
+chronometerjs.afterStart(function(){
+	document.querySelector('.actions__btn--stop').classList.remove('actions__btn--disabled');
+	document.querySelector('.actions__btn--start').classList.add('actions__btn--disabled');
 });
 
 chronometerjs.afterReset(function(){
-	alert('Resetou');
+	document.querySelector('.actions__btn--stop').classList.remove('actions__btn--disabled');
+});
+
+chronometerjs.afterStop(function(){
+	document.querySelector('.actions__btn--stop').classList.add('actions__btn--disabled');
+	document.querySelector('.actions__btn--start').classList.remove('actions__btn--disabled');
 });
 ```
-*Exemplo dentro da pasta chronometer-test/*
+*Exemplo dentro da pasta [chronometer-test/](https://github.com/sergiohpreis/chronometerjs/tree/master/chronometer-test)*
