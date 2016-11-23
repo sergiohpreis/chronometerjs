@@ -53,4 +53,4 @@ chronometerjs.afterStop(function(){
 	document.querySelector('.actions__btn--start').classList.remove('actions__btn--disabled');
 });
 ```
-*Exemplo dentro da pasta [chronometer-test/](https://github.com/sergiohpreis/chronometerjs/tree/master/chronometer-test)*
+*Exemplo dentro da pasta [chronometer-demo/](https://github.com/sergiohpreis/chronometerjs/tree/master/chronometer-demo)*
