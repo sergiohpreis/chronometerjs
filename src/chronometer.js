@@ -2,6 +2,8 @@ var chronometerjs = (function(){
 	//Metodo que receberá o Interval do Start
 	var executeStart = function(){return};
 
+	var interval_active = false;
+
 	// Elementos do Cronometro
 	var _minutes;
 	var _seconds;
@@ -13,24 +15,33 @@ var chronometerjs = (function(){
 	// Váriavel que indica se é a primeira vez que esta rodando o cronomêtro, para decrementar o minuto
 	var _firstPass = true;
 
-	// Váriavel que indica se é o cronometro ja foi iniciado
+	// Váriavel que indica se é o cronometro ja foi parado
 	var stoped = false;
+
+	// Váriavel que indica se o cronometro já foi finalizado
+	var ended = false;
 
 	// Método que inicia o cronometro
 	var start = function(){
 		if (_minutes === undefined || _seconds === undefined) {
 			throw "Set elements to receive the time before start chronometerjs";
+		} else if (interval_active) {
+			throw "You cannot start with chronometer active"
 		};
 
-		if (stoped) {
+		// Verifica se o cronometro foi pausado e se os valores são diferentes
+		if (stoped && !ended) {
 			_minutes.length !== undefined ? _currentMinute = parseInt(_minutes[0].textContent) : _currentMinute = parseInt(_minutes.textContent);
 			_seconds.length !== undefined ? _currentSeconds = parseInt(_seconds[0].textContent) : _currentSeconds = parseInt(_seconds.textContent);
 		} else {
-			var _currentMinute = _initMinutes || 01;
-			var _currentSeconds = _initSeconds || 60;
+			ended = false;
+			_initMinutes !== undefined ? _currentMinute = _initMinutes : _currentMinute = 01;
+			_initSeconds !== undefined ? _currentSeconds = _initSeconds : _currentSeconds = 01;
 		};
 
+		afterStartExecute();
 		executeStart = setInterval(function(){				
+			interval_active = true;
 			/* 
 			Verifica se é a primeira passada para decrementar os minutos, exemplo:
 			Configurado: 10 minutos
@@ -43,7 +54,10 @@ var chronometerjs = (function(){
 
 			_currentSeconds --;
 
-			if (_currentMinute == 0 && _currentSeconds == 0) {
+			if (_currentMinute === 0 && _currentSeconds === 0) {
+				changeMinutesElement();
+				changeSecondsElement();
+				ended = true;
 				stop();
 				return;
 			};
@@ -62,6 +76,17 @@ var chronometerjs = (function(){
 				} else {
 					_minutes.textContent = _currentMinute;
 				};
+
+				if (_currentMinute < 10) {
+					// Caso sejam diversos elementos com a mesma classe e etc
+					if (_minutes.length !== undefined) {
+						for (var k = _minutes.length - 1; k >= 0; k--) {
+							_minutes[k].textContent = '0' + _currentMinute;
+						};
+					} else {
+						_minutes.textContent = '0' + _currentMinute;
+					};
+				};
 			};
 
 			function changeSecondsElement(){
@@ -73,43 +98,34 @@ var chronometerjs = (function(){
 				} else {
 					_seconds.textContent = _currentSeconds;
 				};
+
+				if (_currentSeconds < 10) {
+					// Caso sejam diversos elementos com a mesma classe e etc
+					if (_seconds.length !== undefined) {
+						for (var j = _seconds.length - 1; j >= 0; j--) {
+							_seconds[j].textContent = '0' + _currentSeconds;
+						};
+					} else {
+						_seconds.textContent = '0' + _currentSeconds;
+					};
+				};
 			};
 
 			changeMinutesElement();
 			changeSecondsElement();
-
-			if (_currentSeconds < 10) {
-				// Caso sejam diversos elementos com a mesma classe e etc
-				if (_seconds.length !== undefined) {
-					for (var j = _seconds.length - 1; j >= 0; j--) {
-						_seconds[j].textContent = '0' + _currentSeconds;
-					};
-				} else {
-					_seconds.textContent = '0' + _currentSeconds;
-				};
-			};
-
-			if (_currentMinute < 10) {
-				// Caso sejam diversos elementos com a mesma classe e etc
-				if (_minutes.length !== undefined) {
-					for (var k = _minutes.length - 1; k >= 0; k--) {
-						_minutes[k].textContent = '0' + _currentMinute;
-					};
-				} else {
-					_minutes.textContent = '0' + _currentMinute;
-				};
-			};
 		},1000);
 	};
 	// Método que para o cronometro
 	var stop = function(){
 		clearInterval(executeStart);
 		stoped = true;
+		interval_active = false;
 		_firstPass = true;
 		afterStopExecute();
 	};
 	// Método que reseta o Cronometro
 	var reset = function(minutes, seconds){
+		interval_active = false;
 		if (arguments.length > 0) {
 			_currentMinute = minutes;
 			_currentSeconds = seconds;
@@ -123,6 +139,17 @@ var chronometerjs = (function(){
 		stoped = false;
 		start();
 		afterResetExecute();
+	};
+
+	//Callback após o inicio do cronometro
+	var afterStart = function(callback){
+		afterStartCallback = callback;
+	};
+	var afterStartCallback = function(){
+		return;
+	};
+	var afterStartExecute = function(){
+		afterStartCallback();
 	};
 
 	//Callback após a pausa do cronometro
@@ -210,6 +237,7 @@ var chronometerjs = (function(){
 		resetTrigger: resetTrigger,
 		setInitMinutes: setInitMinutes,
 		setInitSeconds: setInitSeconds,
+		afterStart: afterStart,
 		afterStop: afterStop,
 		afterReset: afterReset,
 		configure: configure
