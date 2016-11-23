@@ -20,14 +20,14 @@ Uma biblioteca em javascript para criação de cronometros
 
 ```javascript
 chronometerjs.configure({
-	// Minutos do cronometro (Se não informado, o padrão é 1)
+	// Minutos do cronômetro (Se não informado, o padrão é 1)
 	minutes: 10,
-	// Segundos do cronometro
+	// Segundos do cronômetro
 	seconds: 20,
 	// Elementos que vão receber os valores
 	minElement: document.querySelector('.chronometer__number--minutes'),
 	secElement: document.querySelector('.chronometer__number--seconds'),
-	// Elementos que irão disparar as ações do cronometros
+	// Elementos que irão disparar as ações
 	startTrigger: '.actions__btn__start',
 	stopTrigger: '.actions__btn__stop',
 	resetTrigger: '.actions__btn__reset'
@@ -38,7 +38,7 @@ chronometerjs.start();
 chronometerjs.stop();
 chronometerjs.reset();
 
-// É possivel passar um callback para as ações do cronometro
+// É possivel passar um callback para as ações do cronômetro
 chronometerjs.afterStart(function(){
 	document.querySelector('.actions__btn--stop').classList.remove('actions__btn--disabled');
 	document.querySelector('.actions__btn--start').classList.add('actions__btn--disabled');
