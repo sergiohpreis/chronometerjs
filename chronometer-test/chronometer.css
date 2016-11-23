@@ -77,16 +77,20 @@ body, html {
 	margin-left: 10px;
 }
 
-.actions__btn__start {
+.actions__btn--start {
     background-color: #348e3f;
     color: #fff;
 }
 
-.actions__btn__stop {
+.actions__btn--stop {
     background-color: #ff1b1b;
     color: #fff;	
 }
 
-.actions__btn__reset {
+.actions__btn--reset {
 	background-color: #b1a3a3;
+}
+
+.actions__btn--disabled {
+	opacity: 0.5;
 }
