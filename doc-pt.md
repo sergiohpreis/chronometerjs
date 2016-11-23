@@ -1,7 +1,6 @@
 # ChronometerJS
 
-A library to a javascript chronometer.  
-PT-BR Documentation: *[doc-pt.md](https://github.com/sergiohpreis/chronometerjs/tree/master/doc-pt.md)*
+Uma biblioteca para um cronómetro javascript. 
 
 ```html
 <header class="header">
@@ -18,33 +17,33 @@ PT-BR Documentation: *[doc-pt.md](https://github.com/sergiohpreis/chronometerjs/
 </header>
 ```
 
-## How to use:
+## Como Usar:
 
-First of all, you need to use the `.configure()` method to setup the chronometer:
+Primeiramente, você precisa usar o método `.configure()` para configurar o cronômetro:
 
 ```javascript
 chronometerjs.configure({
     minutes: 10,
     seconds: 20,
-    minElement: document.querySelector('.chronometer__number--minutes'), // Works to multiple elements like: document.querySelectorAll('.chronometer__number--minutes')
-    secElement: document.querySelector('.chronometer__number--seconds'), // Works to multiple elements like: document.querySelectorAll('.chronometer__number--seconds')
+    minElement: document.querySelector('.chronometer__number--minutes'), // Funciona para multiplos elementos como: document.querySelectorAll('.chronometer__number--minutes')
+    secElement: document.querySelector('.chronometer__number--seconds'), // Funciona para multiplos elementos como: document.querySelectorAll('.chronometer__number--seconds')
     startTrigger: '.actions__btn__start',
     stopTrigger: '.actions__btn__stop',
     resetTrigger: '.actions__btn__reset'
 });
 ```
 
-**minutes:** The minutes of the chronometer, need to be **`typeof number`**. Default: **1**;  
-**seconds:** The seconds that the chronometer will be initiated, need to be **`typeof number`**. Isn't mandatory, if you don't pass this atribute, the chronometer will start on 60 seconds (Example: **09:59**);  
-**minElement (required):** The element that will receive the minutes, need to be a **`javascript selector`**;  
-**secElement (required):** The element that will receive the seconds, need to be a **`javascript selector`**;  
-**startTrigger:** The element that will fire the `.start()` method, need to be **`typeof string`**;  
-**stopTrigger:** The element that will fire the `.stop()` method, need to be **`typeof string`**;  
-**resetTrigger:** The element that will fire the `.reset()` method, need to be **`typeof string`**;
+**minutes:** Os minutos do cronômetro, precisa ser **`typeof number`**. Padrão: **1**;  
+**seconds:** Os segundos em que o cronômetro será iniciado, precisa ser **`typeof number`**. Não é obrigatório, se não for passado, o cronômetro irá iniciar em 60 segundos (Exemplo: **09:59**);  
+**minElement (obrigatório):** O elemento que irá receber os minutos, precisa ser um **`seletor javascript`**;  
+**secElement (obrigatório):** O elemento que irá receber os segundos, precisa ser um **`seletor javascript`**;  
+**startTrigger:** O elemento que irá disparar o método `.start()`, precisa ser **`typeof string`**;  
+**stopTrigger:** O elemento que irá disparar o método `.stop()`, precisa ser **`typeof string`**;  
+**resetTrigger:** O elemento que irá disparar o método `.reset()`, precisa ser **`typeof string`**;
 
 ## Callbacks
 
-You can set some callbacks to the chronometer actions like `.afterStart()`, `.afterStop()`, `.afterReset()`:
+Você pode configurar alguns callbacks para as ações do cronômetro como:  `.afterStart()`, `.afterStop()`, `.afterReset()`:
 
 ```javascript
 chronometerjs.afterStart(function(){
@@ -64,7 +63,7 @@ chronometerjs.afterStop(function(){
 
 ## Infos:
 
-You don't need to set the triggers, if you want to use the methods instead, you can use `.start()`, `.stop()`, `.reset()` separately:
+Você não precisa configurar os triggers, se você quiser usar os métodos, você pode usar `.start()`, `.stop()`, `.reset()` separadamente:
 
 ```javascript
 document.querySelector('.actions__btn__start').addEventListener('click', function(){
@@ -82,5 +81,5 @@ document.querySelector('.actions__btn__reset').addEventListener('click', functio
 
 ## Example
 
-A example of the the library can be found inside the following folder:  
+Um exemplo da biblioteca pode ser encontrado dentro da seguinte pasta:  
 *[chronometer-demo](https://github.com/sergiohpreis/chronometerjs/tree/master/chronometer-demo)*
