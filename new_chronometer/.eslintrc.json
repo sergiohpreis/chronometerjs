@@ -4,5 +4,8 @@
       "describe": true,
       "test": true,
       "expect": true
+    },
+    "rules": {
+      "no-new": "off"
     }
 }
