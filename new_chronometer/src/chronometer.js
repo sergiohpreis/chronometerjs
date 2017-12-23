@@ -4,9 +4,9 @@ class Chronometer {
       throw new Error('A configuration object must be passed on object instance');
     }
 
-    this.hours = config.hours;
-    this.minutes = config.minutes;
-    this.seconds = config.seconds;
+    Object.keys(config).forEach((item) => {
+      this[item] = config[item];
+    });
   }
 }
 
