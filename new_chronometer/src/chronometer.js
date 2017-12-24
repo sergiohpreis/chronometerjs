@@ -10,11 +10,18 @@ class Chronometer {
       throw new Error('The chronometer schema must be provided');
     }
 
+    this.currentTime = '';
+    this.interval = undefined;
+
+    // Sets all config object as properties of the class
+    this.configToProperties(config);
+    this.convertSchema(this.schema);
+  }
+
+  configToProperties(config) {
     Object.keys(config).forEach((item) => {
       this[item] = config[item];
     });
-
-    this.convertSchema(this.schema);
   }
 
   convertSchema(schema) {
@@ -22,6 +29,33 @@ class Chronometer {
       acc[CONFIG[index]] = item;
       return acc;
     }, {});
+  }
+
+  prepare(initialTime) {
+    Object.keys(initialTime).forEach((item) => {
+      this[item] = initialTime[item];
+    });
+  }
+
+  countdown(seconds) {
+    if (seconds === 0) {
+      return;
+    }
+
+    setTimeout(() => {
+      this.seconds = seconds - 1;
+      this.updateCurrentTime();
+      this.countdown(this.seconds);
+    }, this.seconds === this.initialTime.seconds ? 0 : 1000);
+  }
+
+  updateCurrentTime() {
+    this.currentTime = `00:00:${this.seconds}`;
+  }
+
+  start() {
+    this.prepare(this.initialTime);
+    this.countdown(this.seconds);
   }
 }
 
