@@ -1,5 +1,9 @@
 import Chronometer from './chronometer';
 
-console.log(new Chronometer({
+const chronometer = new Chronometer({
   schema: [10],
-}));
+});
+
+console.log(chronometer);
+chronometer.start();
+
