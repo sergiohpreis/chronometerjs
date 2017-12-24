@@ -45,7 +45,7 @@ class Chronometer {
       this.seconds = seconds - 1;
       this.updateCurrentTime();
       this.countdown(this.seconds);
-    }, this.seconds === this.initialTime.seconds ? 0 : 1000);
+    }, 1000);
   }
 
   updateCurrentTime() {
