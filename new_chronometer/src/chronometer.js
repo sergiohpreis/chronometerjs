@@ -11,7 +11,6 @@ class Chronometer {
     }
 
     this.currentTime = '';
-    this.interval = undefined;
 
     // Sets all config object as properties of the class
     this.configToProperties(config);
