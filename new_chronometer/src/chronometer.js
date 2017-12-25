@@ -11,7 +11,7 @@ class Chronometer {
       throw new Error('The chronometer schema must be provided');
     }
 
-    this.currentTime = '';
+    this.observables = [];
 
     // Sets all config object as properties of the class
     this.configToProperties(config);
@@ -32,41 +32,53 @@ class Chronometer {
   }
 
   prepare(initialTime) {
-    Object.keys(initialTime).forEach((item) => {
-      this[item] = initialTime[item];
-    });
+    // Object.keys(initialTime).forEach((item) => {
+    //   this[item] = initialTime[item];
+    // });
+    this.currentTime = {
+      ...initialTime,
+    };
   }
 
   countdown() {
-    if (this.seconds === 0 && this.minutes !== undefined) {
-      this.minutes = this.minutes - 1;
-      this.seconds = 60;
+    if (this.currentTime.seconds === 0 && this.currentTime.minutes !== undefined) {
+      this.currentTime.minutes = this.currentTime.minutes - 1;
+      this.currentTime.seconds = 60;
     }
 
-    if (this.minutes === -1 && this.hours !== undefined) {
-      this.hours = this.hours - 1;
-      this.minutes = 59;
+    if (this.currentTime.minutes === -1 && this.currentTime.hours !== undefined) {
+      this.currentTime.hours = this.currentTime.hours - 1;
+      this.currentTime.minutes = 59;
     }
 
-    if ((this.seconds === 0 && this.minutes === undefined) ||
-    (this.minutes === 0 && this.hours === undefined)) {
+    if ((this.currentTime.seconds === 0 && this.currentTime.minutes === undefined) ||
+      (this.currentTime.minutes === 0 && this.currentTime.hours === undefined)) {
       return;
     }
 
     setTimeout(() => {
-      this.seconds = this.seconds - 1;
-      this.updateCurrentTime();
+      this.currentTime.seconds = this.currentTime.seconds - 1;
+      this.updateTime();
+      this.notify(this.currentTime);
       this.countdown(this.seconds);
     }, 1000);
   }
 
-  updateCurrentTime() {
-    this.currentTime = `${this.hours ? numberToString(this.hours) : '00'}:${this.minutes ? numberToString(this.minutes) : '00'}:${numberToString(this.seconds)}`;
+  updateTime() {
+    this.timeString = `${this.currentTime.hours ? numberToString(this.currentTime.hours) : '00'}:${this.currentTime.minutes ? numberToString(this.currentTime.minutes) : '00'}:${numberToString(this.currentTime.seconds)}`;
   }
 
   start() {
     this.prepare(this.initialTime);
     this.countdown(this.seconds);
+  }
+
+  subscribe(f) {
+    this.observables.push(f);
+  }
+
+  notify(data) {
+    this.observables.forEach(observer => observer(data));
   }
 }
 
