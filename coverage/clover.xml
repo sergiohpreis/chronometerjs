@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1514237015038" clover="3.2.0">
-  <project timestamp="1514237015038" name="All files">
+<coverage generated="1514237563458" clover="3.2.0">
+  <project timestamp="1514237563458" name="All files">
     <metrics statements="35" coveredstatements="35" conditionals="24" coveredconditionals="24" methods="14" coveredmethods="14" elements="73" coveredelements="73" complexity="0" loc="35" ncloc="35" packages="3" files="3" classes="3">
       <package name="src">
         <metrics statements="31" coveredstatements="31" conditionals="22" coveredconditionals="22" methods="13" coveredmethods="13"/>
-        <file name="chronometer.js" path="/Users/sergiohpreis/Work/chronometerjs/new_chronometer/src/chronometer.js">
+        <file name="chronometer.js" path="/Users/sergiohpreis/Work/chronometerjs/src/chronometer.js">
           <metrics statements="31" coveredstatements="31" conditionals="22" coveredconditionals="22" methods="13" coveredmethods="13"/>
           <line num="6" count="22" type="cond" truecount="2" falsecount="0"/>
           <line num="7" count="1" type="stmt"/>
@@ -41,14 +41,14 @@
       </package>
       <package name="src.constants">
         <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <file name="index.js" path="/Users/sergiohpreis/Work/chronometerjs/new_chronometer/src/constants/index.js">
+        <file name="index.js" path="/Users/sergiohpreis/Work/chronometerjs/src/constants/index.js">
           <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
           <line num="1" count="1" type="stmt"/>
         </file>
       </package>
       <package name="src.utils">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-        <file name="index.js" path="/Users/sergiohpreis/Work/chronometerjs/new_chronometer/src/utils/index.js">
+        <file name="index.js" path="/Users/sergiohpreis/Work/chronometerjs/src/utils/index.js">
           <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
           <line num="1" count="1" type="stmt"/>
           <line num="2" count="351182" type="stmt"/>

@@ -1,5 +1,5 @@
 TN:
-SF:/Users/sergiohpreis/Work/chronometerjs/new_chronometer/src/chronometer.js
+SF:/Users/sergiohpreis/Work/chronometerjs/src/chronometer.js
 FN:5,(anonymous_0)
 FN:21,(anonymous_1)
 FN:22,(anonymous_2)
@@ -87,7 +87,7 @@ BRF:22
 BRH:22
 end_of_record
 TN:
-SF:/Users/sergiohpreis/Work/chronometerjs/new_chronometer/src/constants/index.js
+SF:/Users/sergiohpreis/Work/chronometerjs/src/constants/index.js
 FNF:0
 FNH:0
 DA:1,1
@@ -97,7 +97,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/Users/sergiohpreis/Work/chronometerjs/new_chronometer/src/utils/index.js
+SF:/Users/sergiohpreis/Work/chronometerjs/src/utils/index.js
 FN:1,(anonymous_0)
 FNF:1
 FNH:1
