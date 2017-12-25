@@ -187,7 +187,7 @@ describe('Time String', () => {
 });
 
 describe('Observables', () => {
-  test('Should change the value of variable seconds to 7 after 3000ms', () => {
+  test('Should change the value of variable secondsElapsed to 7 after 3000ms', () => {
     let secondsElapsed;
 
     const config = { schema: [10] };
@@ -205,7 +205,7 @@ describe('Observables', () => {
     expect(secondsElapsed).toEqual(7);
   });
 
-  test('Should change the value of variable seconds to 7 after 60000ms', () => {
+  test('Should change the value of variable minutesElapsed to 2 after 60000ms', () => {
     let minutesElapsed;
 
     const config = { schema: [10, 3] };
@@ -223,7 +223,7 @@ describe('Observables', () => {
     expect(minutesElapsed).toEqual(2);
   });
 
-  test('Should change the value of variable seconds to 7 after 3600000ms', () => {
+  test('Should change the value of variable hoursElapsed to 10 after 3600000ms', () => {
     let hoursElapsed;
 
     const config = { schema: [10, 3, 11] };
