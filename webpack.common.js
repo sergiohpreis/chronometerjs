@@ -3,19 +3,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist',
+  output: {
+    filename: 'chronometer-js.js',
+    path: path.resolve(__dirname, 'dist'),
+    library: 'ChronometerJS',
+    libraryTarget: 'umd',
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'ChronometerJS',
     }),
   ],
-  output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-  },
   module: {
     rules: [
       {
