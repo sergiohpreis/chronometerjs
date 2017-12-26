@@ -1,4 +1,4 @@
-import ChronometerJS from '../chronometer';
+import ChronometerJS from '../';
 
 describe('Schema', () => {
   test('config {schema: [10]} should return an initialTime equal to {seconds: 10}', () => {
