@@ -1,7 +1,7 @@
 {
-  "name": "chronometerjs",
+  "name": "jschronometer",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple library to create custom chronometers.",
   "main": "dist/chronometer-js.js",
   "scripts": {
     "lint": "./node_modules/.bin/eslint src/**/*.js",
@@ -10,8 +10,17 @@
     "test": "jest --coverage",
     "test:watch": "npm run test -- --watch"
   },
+  "keywords": [
+    "javascript",
+    "chronometer",
+    "library"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sergiohpreis/chronometerjs.git"
+  },
   "author": "Sergio Henrique Pereira Reis",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

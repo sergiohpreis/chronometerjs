@@ -1,7 +1,7 @@
 import CONFIG from './constants';
 import numberToString from './utils';
 
-class ChronometerJS {
+class JSChronometer {
   constructor(config) {
     if (!config) {
       throw new Error('The configuration object must be passed');
@@ -82,4 +82,4 @@ class ChronometerJS {
   }
 }
 
-export default ChronometerJS;
+export default JSChronometer;

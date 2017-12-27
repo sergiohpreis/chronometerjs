@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1514255945992" clover="3.2.0">
-  <project timestamp="1514255945992" name="All files">
+<coverage generated="1514391056327" clover="3.2.0">
+  <project timestamp="1514391056327" name="All files">
     <metrics statements="35" coveredstatements="35" conditionals="24" coveredconditionals="24" methods="14" coveredmethods="14" elements="73" coveredelements="73" complexity="0" loc="35" ncloc="35" packages="3" files="3" classes="3">
       <package name="src">
         <metrics statements="31" coveredstatements="31" conditionals="22" coveredconditionals="22" methods="13" coveredmethods="13"/>
-        <file name="chronometer.js" path="/Users/sergiohpreis/Work/chronometerjs/src/chronometer.js">
+        <file name="index.js" path="/Users/sergiohpreis/Work/chronometerjs/src/index.js">
           <metrics statements="31" coveredstatements="31" conditionals="22" coveredconditionals="22" methods="13" coveredmethods="13"/>
           <line num="6" count="22" type="cond" truecount="2" falsecount="0"/>
           <line num="7" count="1" type="stmt"/>
